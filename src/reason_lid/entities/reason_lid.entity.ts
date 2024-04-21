@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Lid } from "../../lid/entities/lid.entity";
 
 @Entity()
 export class ReasonLid {
@@ -7,4 +8,7 @@ export class ReasonLid {
 
   @Column()
   reason:string
+
+  @OneToMany(()=>Lid,(lid)=>lid.cancel_reason_id)
+  lids:Lid[]
 }

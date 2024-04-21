@@ -16,7 +16,11 @@ export class LidStatusService {
   }
 
   findAll() {
-    return this.lidstatusRepo.find();
+    return this.lidstatusRepo.find({
+      relations:{
+        lids:true
+      }
+    });
   }
 
   findOne(id: number) {

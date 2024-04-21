@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Lid } from "../../lid/entities/lid.entity";
 
 @Entity()
 export class Target {
@@ -7,4 +8,6 @@ export class Target {
 
   @Column()
   name:string
+  @OneToMany(()=> Lid, (lid)=>lid.target_id)
+  lids:Lid[]
 }

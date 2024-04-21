@@ -16,7 +16,14 @@ export class LidService {
   }
 
   findAll() {
-    return this.lidRepo.find();
+    return this.lidRepo.find({
+      relations:{
+        cancel_reason_id:true,
+        lid_stage_id:true,
+        target_id:true,
+        lid_status_id:true
+      }
+    });
   }
 
   findOne(id: number) {

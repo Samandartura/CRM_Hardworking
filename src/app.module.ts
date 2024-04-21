@@ -1,35 +1,61 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { LidModule } from './lid/lid.module';
-import { Lid } from './lid/entities/lid.entity';
-import { LidStatusModule } from './lid_status/lid_status.module';
-import { LidStatus } from './lid_status/entities/lid_status.entity';
 import { StageModule } from './stage/stage.module';
 import { Stage } from './stage/entities/stage.entity';
-import { TargetModule } from './target/target.module';
-import { Target } from './target/entities/target.entity';
+import { LidStatusModule } from './lid_status/lid_status.module';
+import { LidModule } from './lid/lid.module';
 import { ReasonLidModule } from './reason_lid/reason_lid.module';
+import { Lid } from './lid/entities/lid.entity';
+import { LidStatus } from './lid_status/entities/lid_status.entity';
 import { ReasonLid } from './reason_lid/entities/reason_lid.entity';
-
+import { AuthModule } from './auth/auth.module';
+import { RoleModule } from './role/role.module';
+import { GroupModule } from './group/group.module';
+import { BranchModule } from './branch/branch.module';
+import { Role } from './role/entities/role.entity';
+import { Group } from './group/entities/group.entity';
+import { Branch } from './branch/entities/branch.entity';
+import { StuffRole } from './role/entities/stuffRole.entity';
+import { Target } from './target/entities/target.entity';
+import { Stuff } from './staff/entities/staff.entity';
+import { GroupStuff } from './staff/entities/groupStuff.dto';
+import { TargetModule } from './target/target.module';
+import { StuffModule } from './staff/staff.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mysql',
+      type: 'postgres',
       host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '1234',
-      database: 'microtest',
-      entities: [Lid,LidStatus,Stage,Target,ReasonLid],
+      port: 5432,
+      username: 'postgres',
+      password: '5432',
+      database: 'hardworking',
+      entities: [
+        Stage,
+        Lid,
+        LidStatus,
+        Target,
+        ReasonLid,
+        Stuff,
+        Role,
+        Group,
+        Branch,
+        StuffRole,
+        GroupStuff,
+      ],
       synchronize: true,
     }),
-    LidModule,
-    LidStatusModule,
+    AuthModule,
     StageModule,
+    LidStatusModule,
     TargetModule,
+    LidModule,
     ReasonLidModule,
-    
+    StuffModule,
+    RoleModule,
+    GroupModule,
+    BranchModule,
   ],
   controllers: [],
   providers: [],
