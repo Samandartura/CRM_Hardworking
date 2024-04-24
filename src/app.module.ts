@@ -21,6 +21,11 @@ import { Stuff } from './staff/entities/staff.entity';
 import { GroupStuff } from './staff/entities/groupStuff.dto';
 import { TargetModule } from './target/target.module';
 import { StuffModule } from './staff/staff.module';
+import { StudentsModule } from './students/students.module';
+import { StudentGroupModule } from './student_group/student_group.module';
+import { LessonModule } from './lesson/lesson.module';
+import { StudentLessonModule } from './student_lesson/student_lesson.module';
+import { PaymentModule } from './payment/payment.module';
 
 @Module({
   imports: [
@@ -56,6 +61,11 @@ import { StuffModule } from './staff/staff.module';
     RoleModule,
     GroupModule,
     BranchModule,
+    StudentsModule,
+    StudentGroupModule,
+    LessonModule,
+    StudentLessonModule,
+    PaymentModule,
   ],
   controllers: [],
   providers: [],
